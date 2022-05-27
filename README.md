@@ -5,7 +5,7 @@
 `sudo apt install libxml2-utils`
 2. `crontab -e`  
 3. hourly  
-- `0 * * * * $HOME/namesilo_ddns.sh > /dev/null 2>&1`  
-- or `@hourly $HOME/namesilo_ddns.sh > /dev/null 2>&1`
+   - `0 * * * * $HOME/namesilo_ddns.sh > /dev/null 2>&1`  
+   - or `@hourly $HOME/namesilo_ddns.sh > /dev/null 2>&1`
 4. every 2 hours  
  `* */2 * * * $HOME/namesilo_ddns.sh > /dev/null 2>&1`
