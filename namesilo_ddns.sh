@@ -30,7 +30,7 @@ APIKEY="Your API KEY"
 
 ## Do not edit lines below ##
 
-[ -d temp ] || mkdir -p "$TRACE_DIR"
+[ -d "$TRACE_DIR" ] || mkdir -p "$TRACE_DIR"
 
 ##Saved history pubic IP from last check
 IP_FILE="$TRACE_DIR/PubIP"
