@@ -87,7 +87,7 @@ if [ "$CUR_IP" != "$KNOWN_IP" ]; then
   echo $CUR_IP > $IP_FILE
   echo "$(date +'%Y-%m-%d %H:%M:%S') Public IP changed to $CUR_IP from $DEST_IP" >> $TRACE_LOG
   
-  UPDATE_URL="https://www.namesilo.com/api/dnsUpdateRecord?version=1&type=xml&key=$APIKEY&domain=$DOMAIN&rrid=$RECORD_ID&rrhost=$HOST&rrvalue=$CUR_IP&rrttl=7207"
+  UPDATE_URL="https://www.namesilo.com/api/dnsUpdateRecord?version=1&type=xml&key=$APIKEY&domain=$DOMAIN&rrid=$RECORD_ID&rrhost=${HOST%?}&rrvalue=$CUR_IP&rrttl=7207"
   
   echo "$(date +'%Y-%m-%d %H:%M:%S') Update DNS: $UPDATE_URL" >> $TRACE_LOG
   curl -s "$UPDATE_URL" > $RESPONSE
