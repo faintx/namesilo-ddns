@@ -39,7 +39,12 @@ IP_FILE="$TRACE_DIR/PubIP"
 RESPONSE="$TRACE_DIR/namesilo_response.xml"
 
 ##Get the current public IP using DNS
-CUR_IP="$(curl -s https://api64.ipify.org)"
+## IPv4
+CUR_IP="$(curl -s https://api.ipify.org)"
+
+## IPv6
+# CUR_IP="$(curl -s https://api64.ipify.org)"
+
 ODRC=$?
 
 ## exit if retrive IP failed
@@ -49,10 +54,14 @@ if [ $ODRC -ne 0 ]; then
 elif [ -z $CUR_IP ]; then
    echo "$(date +'%Y-%m-%d %H:%M:%S') Exit: Get Empty IP Address at api.ipify.org!" >> $TRACE_LOG
    exit 1
-# check IPv4
-elif [[ "$CUR_IP" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
-   echo "$(date +'%Y-%m-%d %H:%M:%S') Exit: IPv6 Address expected but get IPv4 Address!" >> $TRACE_LOG
+# for IPv4, exit if IPv6, ChinaTelecom/ChinaNet: 240e:xxxx
+elif [[ "$CUR_IP" =~ ^240e:.* ]]; then
+   echo "$(date +'%Y-%m-%d %H:%M:%S') Exit: IPv4 Address expected but get IPv6 Address!" >> $TRACE_LOG
    exit 1
+# for IPv6, exit if IPv4
+#elif [[ "$CUR_IP" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+#   echo "$(date +'%Y-%m-%d %H:%M:%S') Exit: IPv6 Address expected but get IPv4 Address!" >> $TRACE_LOG
+#   exit 1
 fi
 
 echo "$(date +'%Y-%m-%d %H:%M:%S') Get IP Address $CUR_IP from web" >> $TRACE_LOG
