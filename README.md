@@ -1,4 +1,4 @@
-## change namesilo DNS AAAA records, inspired of [namesilo_ddns](https://github.com/pztop/namesilo_ddns)
+## change namesilo DNS A/AAAA records, inspired of [namesilo_ddns](https://github.com/pztop/namesilo_ddns)
 
 ### how to use
 1. install libxml2-utils  
