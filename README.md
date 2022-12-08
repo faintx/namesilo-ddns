@@ -9,3 +9,17 @@
    - or `@hourly $HOME/namesilo_ddns.sh > /dev/null 2>&1`
 4. every 2 hours  
  `* */2 * * * $HOME/namesilo_ddns.sh > /dev/null 2>&1`
+
+### Prerequisites:
+
+* Generate API key in the “api manager” at Namesilo
+
+* Make sure your system have command `dig` and `xmllint`. If not, install them:
+
+on CentOS:
+
+```sudo yum install bind-utils libxml2```
+    
+on Ubuntu/Debian:
+
+```sudo apt-get install dnsutils libxml2-utils```
