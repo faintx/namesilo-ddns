@@ -23,3 +23,9 @@ on CentOS:
 on Ubuntu/Debian:
 
 ```sudo apt-get install dnsutils libxml2-utils```
+
+### How to use:
+* Download and save the Bash script.
+* Modify the script, set “DOMAIN”, “HOST”, and “APIKEY” at the beginning of the script.
+* Set file permission to make it executable.
+* Create cronjob (optional)
